@@ -50,6 +50,7 @@ import { PWAInstallButton } from './components/PWAInstallButton';
 import { OfflineIndicator } from './components/OfflineIndicator';
 import { AuthScreen } from './components/AuthScreen';
 import { MaintenanceScreen } from './components/MaintenanceScreen';
+import { DancingSanta } from './components/DancingSanta';
 
 // Lazy-loaded heavy tabs and modals with chunk-retry recovery to minimize initial JS payload
 const HistoriaClinicaForm = lazyWithRetry(() =>
@@ -2425,118 +2426,125 @@ export default function App() {
           <div className="space-y-6 sm:space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
             {/* Friendly Hero Card */}
             <div className={`rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 relative overflow-hidden border transition-colors ${themeTokens.heroCard}`}>
-              <div className="relative z-10 max-w-2xl space-y-3">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-bold text-[11px] sm:text-xs border ${themeTokens.heroBadge}`}>
-                    <Sparkles className="w-3.5 h-3.5" /> Servicio de Pediatría & Puericultura
-                  </span>
-                  {isVisitor && (
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-300 font-bold text-[11px] sm:text-xs border border-amber-500/40">
-                      <Eye className="w-3.5 h-3.5" /> Modo de Demostración Rápida (Solo Lectura)
+              <div className="relative z-10 flex flex-col lg:flex-row items-center lg:items-start justify-between gap-6">
+                <div className="max-w-2xl space-y-3 w-full">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-bold text-[11px] sm:text-xs border ${themeTokens.heroBadge}`}>
+                      <Sparkles className="w-3.5 h-3.5" /> Servicio de Pediatría & Puericultura
                     </span>
-                  )}
+                    {isVisitor && (
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-300 font-bold text-[11px] sm:text-xs border border-amber-500/40">
+                        <Eye className="w-3.5 h-3.5" /> Modo de Demostración Rápida (Solo Lectura)
+                      </span>
+                    )}
+                  </div>
+
+                  <h1 className="text-2xl md:text-3xl font-black tracking-tight leading-tight">
+                    HOSPITAL MATERNO INFANTIL<br/>
+                    <span className={themeTokens.heroTitleAccent}>ÁREA DE HOSPITALIZACIÓN DE PEDIATRÍA</span>
+                  </h1>
+                  <p className={`text-sm sm:text-base font-black tracking-tight ${
+                    currentUserGender === 'F' ? themeTokens.heroGreetingF : themeTokens.heroGreetingM
+                  }`}>
+                    {welcomeGreetingText}
+                  </p>
+                  <p className={`text-xs md:text-sm leading-relaxed ${themeTokens.heroBodyText}`}>
+                    {isVisitor 
+                      ? "Bienvenido al modo de demostración rápida. Puedes consultar las camas y los pacientes hospitalizados con acceso estrictamente de solo lectura."
+                      : "Plataforma médica para gestión de historias clínicas pediátricas, revista médica de 24 horas y entrega de guardia en tiempo real."
+                    }
+                  </p>
+
+                  <div className="flex flex-wrap items-center gap-3 pt-2">
+                    {/* Hide Desarrollar historia clinica if in visitor mode */}
+                    {!isVisitor && (
+                      hasDraft ? (
+                        <button
+                          data-tutorial="btn-desarrollar-historia"
+                          onClick={() => {
+                            setEditingHistoria(undefined);
+                            setEditingPatientForHistoriaId(null);
+                            setIsResumeDraft(true);
+                            setInitialHistoriaTab('editor');
+                            setAutoOpenPrint(false);
+                            setShowHistoriaForm(true);
+                          }}
+                          className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-black text-xs flex items-center gap-2 shadow-md dark:shadow-[0_0_16px_rgba(245,158,11,0.55)] ring-2 ring-amber-400/70 transition-all cursor-pointer active:scale-95"
+                          title="Seguir desarrollando la Historia Clínica guardada en borrador"
+                        >
+                          <Edit3 className="w-4 h-4 text-slate-950" />
+                          <span>Desarrollar historia clinica</span>
+                        </button>
+                      ) : (
+                        <button
+                          data-tutorial="btn-desarrollar-historia"
+                          onClick={() => {
+                            if (isTutorialMode) {
+                              openTutorialHistoriaDraft(tutorialSandbox);
+                              return;
+                            }
+                            setEditingHistoria(undefined);
+                            setEditingPatientForHistoriaId(null);
+                            setIsResumeDraft(false);
+                            setInitialHistoriaTab('editor');
+                            setAutoOpenPrint(false);
+                            setShowHistoriaForm(true);
+                          }}
+                          className={`px-5 py-2.5 rounded-xl font-extrabold text-xs flex items-center gap-2 transition-all cursor-pointer active:scale-95 ${themeTokens.heroPrimaryBtn}`}
+                        >
+                          <Plus className="w-4 h-4" /> Desarrollar historia clinica
+                        </button>
+                      )
+                    )}
+
+                    {/* Botón Sugerencias al lado de Desarrollar historia clinica */}
+                    <button
+                      type="button"
+                      data-tutorial="btn-sugerencias"
+                      onClick={() => {
+                        const defaultName = isAdmin
+                          ? 'Dr. Brayan Guerrero'
+                          : (doctorEvolutionDisplayName || currentUserFullName || currentUsername || 'Médico Usuario');
+                        const now = new Date();
+                        const formattedDate = now.toLocaleDateString('es-VE', {
+                          day: '2-digit',
+                          month: '2-digit',
+                          year: 'numeric',
+                          hour: '2-digit',
+                          minute: '2-digit'
+                        });
+                        setSuggestionUserName(defaultName);
+                        setSuggestionDateStr(formattedDate);
+                        setSuggestionMessage('');
+                        setSuggestionSuccessMsg(null);
+                        setShowSuggestionsModal(true);
+                      }}
+                      className="px-4 py-2.5 rounded-xl font-extrabold text-xs flex items-center gap-2 transition-all cursor-pointer active:scale-95 bg-gradient-to-r from-cyan-600 via-teal-600 to-emerald-600 hover:from-cyan-500 hover:to-emerald-500 text-white shadow-[0_0_16px_rgba(20,184,166,0.5)] ring-2 ring-teal-400/60"
+                      title="Enviar una nota o sugerencia al desarrollador sobre la página"
+                    >
+                      <MessageSquarePlus className="w-4 h-4" />
+                      <span>Sugerencias</span>
+                    </button>
+
+                    <PWAInstallButton variant="hero" />
+
+                    {/* Panel de Control strictly for admin */}
+                    {isAdmin && (
+                      <button
+                        onClick={() => setActiveTab('admin')}
+                        className={`px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition-all cursor-pointer active:scale-95 shadow-xs ${themeTokens.heroSecondaryBtn}`}
+                        title="Ingresar al Panel de Control de Administrador"
+                      >
+                        <ShieldCheck className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                        <span>Panel de Control</span>
+                      </button>
+                    )}
+                  </div>
                 </div>
 
-                <h1 className="text-2xl md:text-3xl font-black tracking-tight leading-tight">
-                  HOSPITAL MATERNO INFANTIL<br/>
-                  <span className={themeTokens.heroTitleAccent}>ÁREA DE HOSPITALIZACIÓN DE PEDIATRÍA</span>
-                </h1>
-                <p className={`text-sm sm:text-base font-black tracking-tight ${
-                  currentUserGender === 'F' ? themeTokens.heroGreetingF : themeTokens.heroGreetingM
-                }`}>
-                  {welcomeGreetingText}
-                </p>
-                <p className={`text-xs md:text-sm leading-relaxed ${themeTokens.heroBodyText}`}>
-                  {isVisitor 
-                    ? "Bienvenido al modo de demostración rápida. Puedes consultar las camas y los pacientes hospitalizados con acceso estrictamente de solo lectura."
-                    : "Plataforma médica para gestión de historias clínicas pediátricas, revista médica de 24 horas y entrega de guardia en tiempo real."
-                  }
-                </p>
-
-                <div className="flex flex-wrap items-center gap-3 pt-2">
-                  {/* Hide Desarrollar historia clinica if in visitor mode */}
-                  {!isVisitor && (
-                    hasDraft ? (
-                      <button
-                        data-tutorial="btn-desarrollar-historia"
-                        onClick={() => {
-                          setEditingHistoria(undefined);
-                          setEditingPatientForHistoriaId(null);
-                          setIsResumeDraft(true);
-                          setInitialHistoriaTab('editor');
-                          setAutoOpenPrint(false);
-                          setShowHistoriaForm(true);
-                        }}
-                        className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-black text-xs flex items-center gap-2 shadow-md dark:shadow-[0_0_16px_rgba(245,158,11,0.55)] ring-2 ring-amber-400/70 transition-all cursor-pointer active:scale-95"
-                        title="Seguir desarrollando la Historia Clínica guardada en borrador"
-                      >
-                        <Edit3 className="w-4 h-4 text-slate-950" />
-                        <span>Desarrollar historia clinica</span>
-                      </button>
-                    ) : (
-                      <button
-                        data-tutorial="btn-desarrollar-historia"
-                        onClick={() => {
-                          if (isTutorialMode) {
-                            openTutorialHistoriaDraft(tutorialSandbox);
-                            return;
-                          }
-                          setEditingHistoria(undefined);
-                          setEditingPatientForHistoriaId(null);
-                          setIsResumeDraft(false);
-                          setInitialHistoriaTab('editor');
-                          setAutoOpenPrint(false);
-                          setShowHistoriaForm(true);
-                        }}
-                        className={`px-5 py-2.5 rounded-xl font-extrabold text-xs flex items-center gap-2 transition-all cursor-pointer active:scale-95 ${themeTokens.heroPrimaryBtn}`}
-                      >
-                        <Plus className="w-4 h-4" /> Desarrollar historia clinica
-                      </button>
-                    )
-                  )}
-
-                  {/* Botón Sugerencias al lado de Desarrollar historia clinica */}
-                  <button
-                    type="button"
-                    data-tutorial="btn-sugerencias"
-                    onClick={() => {
-                      const defaultName = isAdmin
-                        ? 'Dr. Brayan Guerrero'
-                        : (doctorEvolutionDisplayName || currentUserFullName || currentUsername || 'Médico Usuario');
-                      const now = new Date();
-                      const formattedDate = now.toLocaleDateString('es-VE', {
-                        day: '2-digit',
-                        month: '2-digit',
-                        year: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit'
-                      });
-                      setSuggestionUserName(defaultName);
-                      setSuggestionDateStr(formattedDate);
-                      setSuggestionMessage('');
-                      setSuggestionSuccessMsg(null);
-                      setShowSuggestionsModal(true);
-                    }}
-                    className="px-4 py-2.5 rounded-xl font-extrabold text-xs flex items-center gap-2 transition-all cursor-pointer active:scale-95 bg-gradient-to-r from-cyan-600 via-teal-600 to-emerald-600 hover:from-cyan-500 hover:to-emerald-500 text-white shadow-[0_0_16px_rgba(20,184,166,0.5)] ring-2 ring-teal-400/60"
-                    title="Enviar una nota o sugerencia al desarrollador sobre la página"
-                  >
-                    <MessageSquarePlus className="w-4 h-4" />
-                    <span>Sugerencias</span>
-                  </button>
-
-                  <PWAInstallButton variant="hero" />
-
-                  {/* Panel de Control strictly for admin */}
-                  {isAdmin && (
-                    <button
-                      onClick={() => setActiveTab('admin')}
-                      className={`px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition-all cursor-pointer active:scale-95 shadow-xs ${themeTokens.heroSecondaryBtn}`}
-                      title="Ingresar al Panel de Control de Administrador"
-                    >
-                      <ShieldCheck className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-                      <span>Panel de Control</span>
-                    </button>
-                  )}
+                {/* Dancing Santa Claus at Inicio */}
+                <div className="shrink-0 flex justify-center w-full lg:w-auto">
+                  <DancingSanta />
                 </div>
               </div>
             </div>

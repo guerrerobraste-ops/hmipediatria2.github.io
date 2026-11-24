@@ -1026,6 +1026,369 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }
+
+  .animate-santa-meneo-body,
+  .animate-santa-disco-body,
+  .animate-santa-zapateo-body,
+  .animate-santa-giro-body,
+  .animate-santa-meneo-arm-l,
+  .animate-santa-disco-arm-l,
+  .animate-santa-meneo-arm-r,
+  .animate-santa-disco-arm-r,
+  .animate-santa-foot-l,
+  .animate-santa-foot-r,
+  .animate-santa-zapateo-foot-l,
+  .animate-santa-zapateo-foot-r,
+  .animate-santa-head-bob,
+  .animate-santa-pompom,
+  .animate-santa-note-1,
+  .animate-santa-note-2,
+  .animate-santa-note-3,
+  .animate-santa-note-4 {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* ========================================== */
+/* DANCING SANTA CLAUS KEYFRAMES & UTILITIES  */
+/* ========================================== */
+@keyframes santaMeneoBody {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-8px) rotate(-4deg) scale(1.02);
+  }
+  50% {
+    transform: translateY(-2px) rotate(0deg) scale(0.98);
+  }
+  75% {
+    transform: translateY(-10px) rotate(4deg) scale(1.03);
+  }
+}
+
+@keyframes santaMeneoArmL {
+  0%, 100% {
+    transform-origin: 72px 142px;
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform-origin: 72px 142px;
+    transform: rotate(-48deg);
+  }
+}
+
+@keyframes santaMeneoArmR {
+  0%, 100% {
+    transform-origin: 168px 142px;
+    transform: rotate(8deg);
+  }
+  50% {
+    transform-origin: 168px 142px;
+    transform: rotate(48deg);
+  }
+}
+
+@keyframes santaFootL {
+  0%, 100% {
+    transform-origin: 78px 196px;
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform-origin: 78px 196px;
+    transform: translateY(-8px) rotate(-12deg);
+  }
+  50% {
+    transform-origin: 78px 196px;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes santaFootR {
+  0%, 100% {
+    transform-origin: 156px 196px;
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform-origin: 156px 196px;
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform-origin: 156px 196px;
+    transform: translateY(-8px) rotate(12deg);
+  }
+}
+
+@keyframes santaHeadBob {
+  0%, 100% {
+    transform-origin: 120px 125px;
+    transform: rotate(0deg) translateY(0);
+  }
+  25% {
+    transform-origin: 120px 125px;
+    transform: rotate(-6deg) translateY(-2px);
+  }
+  75% {
+    transform-origin: 120px 125px;
+    transform: rotate(6deg) translateY(-2px);
+  }
+}
+
+@keyframes santaPompomSway {
+  0%, 100% {
+    transform-origin: 195px 106px;
+    transform: rotate(0deg);
+  }
+  25% {
+    transform-origin: 195px 106px;
+    transform: rotate(26deg) translateY(3px);
+  }
+  75% {
+    transform-origin: 195px 106px;
+    transform: rotate(-26deg) translateY(-3px);
+  }
+}
+
+@keyframes santaShadowPulse {
+  0%, 100% {
+    transform-origin: 120px 252px;
+    transform: scale(1);
+    opacity: 0.65;
+  }
+  50% {
+    transform-origin: 120px 252px;
+    transform: scale(0.85);
+    opacity: 0.38;
+  }
+}
+
+/* Disco Move */
+@keyframes santaDiscoBody {
+  0%, 100% {
+    transform: translateY(0) rotate(0) skewX(0);
+  }
+  25% {
+    transform: translateY(-12px) rotate(-6deg) skewX(-4deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(0) skewX(0);
+  }
+  75% {
+    transform: translateY(-12px) rotate(6deg) skewX(4deg);
+  }
+}
+
+@keyframes santaDiscoArmL {
+  0%, 100% {
+    transform-origin: 72px 142px;
+    transform: rotate(-72deg);
+  }
+  50% {
+    transform-origin: 72px 142px;
+    transform: rotate(12deg);
+  }
+}
+
+@keyframes santaDiscoArmR {
+  0%, 100% {
+    transform-origin: 168px 142px;
+    transform: rotate(-12deg);
+  }
+  50% {
+    transform-origin: 168px 142px;
+    transform: rotate(72deg);
+  }
+}
+
+/* Zapateo Move */
+@keyframes santaZapateoBody {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(-6px) scale(0.97, 1.03);
+  }
+  50% {
+    transform: translateY(0) scale(1.02, 0.98);
+  }
+  75% {
+    transform: translateY(-6px) scale(0.97, 1.03);
+  }
+}
+
+@keyframes santaZapateoFootL {
+  0%, 50%, 100% {
+    transform-origin: 78px 196px;
+    transform: translateY(0) rotate(0);
+  }
+  25% {
+    transform-origin: 78px 196px;
+    transform: translateY(-14px) rotate(-18deg);
+  }
+}
+
+@keyframes santaZapateoFootR {
+  0%, 50%, 100% {
+    transform-origin: 156px 196px;
+    transform: translateY(0) rotate(0);
+  }
+  75% {
+    transform-origin: 156px 196px;
+    transform: translateY(-14px) rotate(18deg);
+  }
+}
+
+/* Giro Move */
+@keyframes santaGiroBody {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-14px) rotate(-90deg) scale(0.92);
+  }
+  50% {
+    transform: translateY(-20px) rotate(-180deg) scale(1.06);
+  }
+  75% {
+    transform: translateY(-14px) rotate(-270deg) scale(0.92);
+  }
+  100% {
+    transform: translateY(0) rotate(-360deg) scale(1);
+  }
+}
+
+/* Floating Musical Notes and Sparkles */
+@keyframes santaNoteRise1 {
+  0% {
+    transform: translate(0, 0) scale(0.7) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-28px, -65px) scale(1.2) rotate(-25deg);
+    opacity: 0;
+  }
+}
+
+@keyframes santaNoteRise2 {
+  0% {
+    transform: translate(0, 0) scale(0.7) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(28px, -70px) scale(1.25) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+@keyframes santaNoteRise3 {
+  0% {
+    transform: translate(0, 0) scale(0.6) rotate(0deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(-14px, -80px) scale(1.1) rotate(15deg);
+    opacity: 0;
+  }
+}
+
+@keyframes santaNoteRise4 {
+  0% {
+    transform: translate(0, 0) scale(0.6) rotate(0deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(18px, -75px) scale(1.15) rotate(-20deg);
+    opacity: 0;
+  }
+}
+
+/* Santa Animation Utility Classes */
+.animate-santa-meneo-body {
+  animation: santaMeneoBody 1.6s infinite ease-in-out;
+}
+.animate-santa-meneo-arm-l {
+  animation: santaMeneoArmL 1.6s infinite ease-in-out;
+}
+.animate-santa-meneo-arm-r {
+  animation: santaMeneoArmR 1.6s infinite ease-in-out;
+}
+.animate-santa-foot-l {
+  animation: santaFootL 1.6s infinite ease-in-out;
+}
+.animate-santa-foot-r {
+  animation: santaFootR 1.6s infinite ease-in-out;
+}
+
+.animate-santa-disco-body {
+  animation: santaDiscoBody 1.4s infinite ease-in-out;
+}
+.animate-santa-disco-arm-l {
+  animation: santaDiscoArmL 1.4s infinite ease-in-out;
+}
+.animate-santa-disco-arm-r {
+  animation: santaDiscoArmR 1.4s infinite ease-in-out;
+}
+
+.animate-santa-zapateo-body {
+  animation: santaZapateoBody 0.65s infinite ease-in-out;
+}
+.animate-santa-zapateo-foot-l {
+  animation: santaZapateoFootL 0.65s infinite ease-in-out;
+}
+.animate-santa-zapateo-foot-r {
+  animation: santaZapateoFootR 0.65s infinite ease-in-out;
+}
+
+.animate-santa-giro-body {
+  animation: santaGiroBody 2.2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-santa-head-bob {
+  animation: santaHeadBob 1.6s infinite ease-in-out;
+}
+.animate-santa-pompom {
+  animation: santaPompomSway 1.6s infinite ease-in-out;
+}
+.animate-santa-shadow {
+  animation: santaShadowPulse 1.6s infinite ease-in-out;
+}
+
+.animate-santa-note-1 {
+  animation: santaNoteRise1 2.2s infinite ease-out;
+}
+.animate-santa-note-2 {
+  animation: santaNoteRise2 2.6s 0.6s infinite ease-out;
+}
+.animate-santa-note-3 {
+  animation: santaNoteRise3 3.0s 1.2s infinite ease-out;
+}
+.animate-santa-note-4 {
+  animation: santaNoteRise4 2.8s 1.8s infinite ease-out;
 }
 
 /* ========================================== */
