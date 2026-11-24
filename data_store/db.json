@@ -1,0 +1,161 @@
+{
+  "patients": [],
+  "beds": [
+    {
+      "id": "ts-1",
+      "bedNumber": "Cama 01",
+      "area": "Traumashock",
+      "status": "free",
+      "updatedAt": "2026-11-24T03:29:46.341Z"
+    },
+    {
+      "id": "ts-2",
+      "bedNumber": "Cama 02",
+      "area": "Traumashock",
+      "status": "free",
+      "updatedAt": "2026-11-24T03:29:46.342Z"
+    },
+    {
+      "id": "ts-3",
+      "bedNumber": "Cama 03",
+      "area": "Traumashock",
+      "status": "free",
+      "updatedAt": "2026-11-24T03:29:46.342Z"
+    },
+    {
+      "id": "obs-1",
+      "bedNumber": "Cama 01",
+      "area": "ÁREA DE OBSERVACIÓN",
+      "status": "free",
+      "updatedAt": "2026-11-24T03:29:46.342Z"
+    },
+    {
+      "id": "obs-2",
+      "bedNumber": "Cama 02",
+      "area": "ÁREA DE OBSERVACIÓN",
+      "status": "free",
+      "updatedAt": "2026-11-24T03:29:46.342Z"
+    },
+    {
+      "id": "obs-3",
+      "bedNumber": "Cama 03",
+      "area": "ÁREA DE OBSERVACIÓN",
+      "status": "free",
+      "updatedAt": "2026-11-24T03:29:46.342Z"
+    },
+    {
+      "id": "obs-4",
+      "bedNumber": "Cama 04",
+      "area": "ÁREA DE OBSERVACIÓN",
+      "status": "free",
+      "updatedAt": "2026-11-24T03:29:46.342Z"
+    },
+    {
+      "id": "resp-1",
+      "bedNumber": "Cama 01",
+      "area": "Respiratorio",
+      "status": "free",
+      "updatedAt": "2026-11-24T03:29:46.342Z"
+    },
+    {
+      "id": "resp-2",
+      "bedNumber": "Cama 02",
+      "area": "Respiratorio",
+      "status": "free",
+      "updatedAt": "2026-11-24T03:29:46.342Z"
+    },
+    {
+      "id": "resp-3",
+      "bedNumber": "Cama 03",
+      "area": "Respiratorio",
+      "status": "free",
+      "updatedAt": "2026-11-24T03:29:46.342Z"
+    },
+    {
+      "id": "ais-1",
+      "bedNumber": "Cama 01",
+      "area": "Aislamiento",
+      "status": "free",
+      "updatedAt": "2026-11-24T03:29:46.342Z"
+    },
+    {
+      "id": "ais-2",
+      "bedNumber": "Cama 02",
+      "area": "Aislamiento",
+      "status": "free",
+      "updatedAt": "2026-11-24T03:29:46.342Z"
+    },
+    {
+      "id": "hosp-1",
+      "bedNumber": "Cama 01",
+      "area": "Hospitalización",
+      "status": "free",
+      "updatedAt": "2026-11-24T03:29:46.342Z"
+    },
+    {
+      "id": "hosp-2",
+      "bedNumber": "Cama 02",
+      "area": "Hospitalización",
+      "status": "free",
+      "updatedAt": "2026-11-24T03:29:46.342Z"
+    },
+    {
+      "id": "hosp-3",
+      "bedNumber": "Cama 03",
+      "area": "Hospitalización",
+      "status": "free",
+      "updatedAt": "2026-11-24T03:29:46.342Z"
+    },
+    {
+      "id": "hosp-4",
+      "bedNumber": "Cama 04",
+      "area": "Hospitalización",
+      "status": "free",
+      "updatedAt": "2026-11-24T03:29:46.342Z"
+    }
+  ],
+  "tasks": [],
+  "historias": [],
+  "maintenance": {
+    "enabled": false,
+    "message": "Página en mantenimiento, por favor espere que el desarrollador repare el sistema, gracias por su paciencia :)",
+    "updatedAt": "2026-11-24T03:29:46.344Z"
+  },
+  "ambientSound": {
+    "enabled": true,
+    "intensity": 0.45,
+    "updatedAt": "2026-11-24T03:29:46.344Z",
+    "updatedBy": "Administrador"
+  },
+  "panelControl": {
+    "seasonalTheme": "navidad",
+    "autoVenezuelaMode": false,
+    "autoNightShiftMode": true,
+    "ambientSound": {
+      "enabled": true,
+      "intensity": 0.45,
+      "updatedAt": "2026-11-24T03:29:46.344Z",
+      "updatedBy": "Administrador"
+    },
+    "maintenanceMode": {
+      "enabled": false,
+      "message": "Página en mantenimiento, por favor espere que el desarrollador repare el sistema, gracias por su paciencia :)",
+      "updatedAt": "2026-11-24T03:29:46.344Z"
+    },
+    "updatedAt": "2026-11-24T03:29:46.344Z",
+    "updatedBy": "Sistema"
+  },
+  "userPresence": {
+    "user:admin": {
+      "key": "user:admin",
+      "username": "admin",
+      "email": "guerrerobraste@gmail.com",
+      "fullName": "Administrador",
+      "isAdmin": true,
+      "isOnline": true,
+      "lastLoginAt": "2026-11-24T03:39:22.207Z",
+      "lastSeenAt": "2026-11-24T04:26:58.787Z",
+      "updatedAt": "2026-11-24T04:26:58.787Z"
+    }
+  }
+}

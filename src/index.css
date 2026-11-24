@@ -1,0 +1,1493 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root,
+  [data-seasonal="normal"] {
+    --app-bg: #eef4f5;
+    --app-text: #172636;
+    --surface-card: #f8fbfb;
+    --surface-muted: #e4eef0;
+    --border-soft: #cfe0e2;
+    --accent-primary: #0f766e;
+    --accent-ring: rgba(15, 118, 110, 0.25);
+  }
+
+  .dark,
+  .dark[data-seasonal="normal"] {
+    --app-bg: #020617;
+    --app-text: #f1f5f9;
+    --surface-card: #0f172a;
+    --surface-muted: #1e293b;
+    --border-soft: #1e293b;
+    --accent-primary: #2dd4bf;
+    --accent-ring: rgba(45, 212, 191, 0.25);
+  }
+
+  [data-seasonal="navidad"] {
+    --app-bg: #f5f1e9;
+    --app-text: #1f241f;
+    --surface-card: #fcfaf5;
+    --surface-muted: #ede6d9;
+    --border-soft: #dfd5c3;
+    --accent-primary: #15803d;
+    --accent-ring: rgba(21, 128, 61, 0.25);
+  }
+
+  .dark[data-seasonal="navidad"] {
+    --app-bg: #05120c;
+    --app-text: #f5f5f4;
+    --surface-card: #0b1f16;
+    --surface-muted: #10291e;
+    --border-soft: #134e3a;
+    --accent-primary: #34d399;
+    --accent-ring: rgba(52, 211, 153, 0.28);
+  }
+
+  [data-seasonal="halloween"] {
+    --app-bg: #f2edf6;
+    --app-text: #22182c;
+    --surface-card: #fbf9fd;
+    --surface-muted: #eae2f3;
+    --border-soft: #dad0e8;
+    --accent-primary: #c2410c;
+    --accent-ring: rgba(194, 65, 12, 0.25);
+  }
+
+  .dark[data-seasonal="halloween"] {
+    --app-bg: #0c0714;
+    --app-text: #f3e8ff;
+    --surface-card: #140d21;
+    --surface-muted: #1f1433;
+    --border-soft: #3b2259;
+    --accent-primary: #fb923c;
+    --accent-ring: rgba(251, 146, 60, 0.28);
+  }
+
+  [data-seasonal="guardia_nocturna"] {
+    --app-bg: #e6ebf5;
+    --app-text: #162033;
+  }
+  .dark[data-seasonal="guardia_nocturna"] {
+    --app-bg: #030712;
+    --app-text: #eef2ff;
+  }
+  [data-seasonal="dia_del_nino"] {
+    --app-bg: #edf7fe;
+  }
+  .dark[data-seasonal="dia_del_nino"] {
+    --app-bg: #061527;
+  }
+  [data-seasonal="dia_del_medico"] {
+    --app-bg: #ebf2fa;
+  }
+  .dark[data-seasonal="dia_del_medico"] {
+    --app-bg: #040f21;
+  }
+  [data-seasonal="carnaval"] {
+    --app-bg: #faf0f7;
+  }
+  .dark[data-seasonal="carnaval"] {
+    --app-bg: #15071e;
+  }
+  [data-seasonal="ano_nuevo"] {
+    --app-bg: #f8f4e8;
+  }
+  .dark[data-seasonal="ano_nuevo"] {
+    --app-bg: #080c1c;
+  }
+  [data-seasonal="primavera"] {
+    --app-bg: #fbf2f5;
+  }
+  .dark[data-seasonal="primavera"] {
+    --app-bg: #140a14;
+  }
+  [data-seasonal="espacio"] {
+    --app-bg: #eeeaf7;
+  }
+  .dark[data-seasonal="espacio"] {
+    --app-bg: #070514;
+  }
+  [data-seasonal="fondo_marino"] {
+    --app-bg: #e6f6f8;
+  }
+  .dark[data-seasonal="fondo_marino"] {
+    --app-bg: #03161c;
+  }
+  [data-seasonal="pequenos_heroes"] {
+    --app-bg: #f9eef0;
+  }
+  .dark[data-seasonal="pequenos_heroes"] {
+    --app-bg: #17090f;
+  }
+  [data-seasonal="amor_amistad"] {
+    --app-bg: #fcefef;
+  }
+  .dark[data-seasonal="amor_amistad"] {
+    --app-bg: #190810;
+  }
+  [data-seasonal="otono"] {
+    --app-bg: #f6efe6;
+  }
+  .dark[data-seasonal="otono"] {
+    --app-bg: #140e09;
+  }
+  [data-seasonal="lluvia_relajante"] {
+    --app-bg: #eaeff5;
+  }
+  .dark[data-seasonal="lluvia_relajante"] {
+    --app-bg: #071018;
+  }
+  [data-seasonal="fiestas_patrias"] {
+    --app-bg: #fff8db;
+  }
+  .dark[data-seasonal="fiestas_patrias"] {
+    --app-bg: #071530;
+  }
+  [data-seasonal="equipo_salud"] {
+    --app-bg: #eaf6f2;
+  }
+  .dark[data-seasonal="equipo_salud"] {
+    --app-bg: #031712;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    background-color: var(--app-bg);
+    color: var(--app-text);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  *, ::before, ::after {
+    box-sizing: border-box;
+  }
+
+  /* Prevent automatic text zoom on iOS Safari / Android when clicking standard form inputs */
+  input[type="text"]:not(.pdf-page-container input),
+  input[type="number"]:not(.pdf-page-container input),
+  input[type="date"]:not(.pdf-page-container input),
+  input[type="time"]:not(.pdf-page-container input),
+  select:not(.pdf-page-container select),
+  textarea:not(.pdf-page-container textarea) {
+    font-size: 16px !important; /* 16px prevents mobile browser auto-zoom on input focus */
+    touch-action: manipulation;
+  }
+
+  @media (min-width: 640px) {
+    input[type="text"]:not(.pdf-page-container input),
+    input[type="number"]:not(.pdf-page-container input),
+    input[type="date"]:not(.pdf-page-container input),
+    input[type="time"]:not(.pdf-page-container input),
+    select:not(.pdf-page-container select),
+    textarea:not(.pdf-page-container textarea) {
+      font-size: 0.875rem !important; /* 14px on tablets/desktops */
+    }
+  }
+
+  /* Touch Target Optimizations */
+  button, a, input, select {
+    touch-action: manipulation;
+  }
+
+  @media (max-width: 639px) {
+    button:not(.pdf-page-container button),
+    select:not(.pdf-page-container select),
+    input:not(.pdf-page-container input),
+    textarea:not(.pdf-page-container textarea) {
+      min-height: 44px;
+    }
+  }
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Clean Arial clinical document typography with proper heading/body hierarchy and strict box containment */
+.pdf-document-font {
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+.pdf-document-font p,
+.pdf-document-font span,
+.pdf-document-font div,
+.pdf-document-font input,
+.pdf-document-font textarea,
+.pdf-document-font select,
+.pdf-document-font td,
+.pdf-document-font th,
+.pdf-document-font h1,
+.pdf-document-font h2,
+.pdf-document-font h3,
+.pdf-document-font h4,
+.pdf-document-font label {
+  font-family: Arial, Helvetica, sans-serif;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+/* Custom Print CSS for Exact Carta (Letter: 215.9mm x 279.4mm) Venezuelan Hospital Form PDF Printing */
+@media print {
+  /* 0A. White PDF Viewer Direct Sheet Print Mode (prints rendered PDF pages 1:1 with zero margins/chrome) */
+  body.hmi-printing-pdf-sheets > *:not(#hmi-pdf-print-viewer-modal) {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  body.hmi-printing-pdf-sheets > #hmi-pdf-print-viewer-modal {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: static !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: auto !important;
+  }
+
+  body.hmi-printing-pdf-sheets .hmi-pdf-viewer-toolbar,
+  body.hmi-printing-pdf-sheets .hmi-pdf-page-caption,
+  body.hmi-printing-pdf-sheets .hmi-pdf-patient-banner {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  body.hmi-printing-pdf-sheets #hmi-pdf-pages-stage {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body.hmi-printing-pdf-sheets .hmi-pdf-page-wrapper {
+    display: block !important;
+    visibility: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    overflow: hidden !important;
+    background: #ffffff !important;
+  }
+
+  body.hmi-printing-pdf-sheets .hmi-pdf-page-wrapper[data-native-document="true"] {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+    overflow: visible !important;
+  }
+
+  body.hmi-printing-pdf-sheets .hmi-pdf-page-wrapper:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+  body.hmi-printing-pdf-sheets .hmi-pdf-page-wrapper[data-orientation="landscape"] {
+    page: hmi-pdf-landscape;
+  }
+
+  body.hmi-printing-pdf-sheets .hmi-pdf-page-sheet {
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    overflow: hidden !important;
+  }
+
+  body.hmi-printing-pdf-sheets .hmi-pdf-page-wrapper[data-native-document="true"] .hmi-pdf-page-sheet {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  body.hmi-printing-pdf-sheets .hmi-pdf-page-sheet > img {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+    margin: 0 auto !important;
+  }
+
+  body.hmi-printing-pdf-sheets .hmi-pdf-dom-sheet-inner {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    overflow: visible !important;
+  }
+
+  body.hmi-printing-pdf-sheets .hmi-pdf-dom-sheet-inner .no-print,
+  body.hmi-printing-pdf-sheets .hmi-pdf-dom-sheet-inner button {
+    display: none !important;
+  }
+
+  body.hmi-printing-pdf-sheets .hmi-pdf-dom-sheet-inner .pdf-page-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    page-break-after: auto !important;
+    break-after: auto !important;
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  body.hmi-printing-pdf-sheets table.hmi-print-flow-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body.hmi-printing-pdf-sheets table.hmi-print-flow-table > thead {
+    display: table-header-group !important;
+  }
+
+  body.hmi-printing-pdf-sheets table.hmi-print-flow-table > tbody {
+    display: table-row-group !important;
+  }
+
+  body.hmi-printing-pdf-sheets table.hmi-print-flow-table > tfoot {
+    display: table-footer-group !important;
+  }
+
+  body.hmi-printing-pdf-sheets table.hmi-print-flow-table tr,
+  body.hmi-printing-pdf-sheets table.hmi-print-flow-table td,
+  body.hmi-printing-pdf-sheets table.hmi-print-flow-table th {
+    border: none;
+  }
+
+  body.hmi-printing-pdf-sheets table.hmi-print-flow-table td.hmi-print-top-spacer,
+  body.hmi-printing-pdf-sheets table.hmi-print-flow-table td.hmi-print-bottom-spacer {
+    height: 7mm !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    line-height: 0 !important;
+    font-size: 0 !important;
+  }
+
+  body.hmi-printing-pdf-sheets table.hmi-print-flow-table.hmi-print-flow-landscape td.hmi-print-top-spacer,
+  body.hmi-printing-pdf-sheets table.hmi-print-flow-table.hmi-print-flow-landscape td.hmi-print-bottom-spacer {
+    height: 5mm !important;
+  }
+
+  body.hmi-printing-pdf-sheets table.hmi-print-flow-table td.hmi-print-flow-body-cell {
+    padding: 0 7mm !important;
+    border: none !important;
+    vertical-align: top !important;
+  }
+
+  body.hmi-printing-pdf-sheets table.hmi-print-flow-table.hmi-print-flow-landscape td.hmi-print-flow-body-cell {
+    padding: 0 5mm !important;
+  }
+
+  body.hmi-printing-pdf-sheets table.hmi-print-flow-table td.hmi-print-flow-header-cell {
+    padding: 0 7mm 2.5mm 7mm !important;
+    border: none !important;
+    vertical-align: top !important;
+  }
+
+  body.hmi-printing-pdf-sheets table.hmi-print-flow-table.hmi-print-flow-landscape td.hmi-print-flow-header-cell {
+    padding: 0 5mm 2mm 5mm !important;
+  }
+
+  /* 0. Direct Print Portal Mode (used by Evolutions Print & Bulk Evolutions Print) */
+  body.hmi-printing-portal > *:not(#hmi-direct-print-portal) {
+    display: none !important;
+  }
+
+  body.hmi-printing-portal > #hmi-direct-print-portal {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body.hmi-printing-portal > #hmi-direct-print-portal * {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  body.hmi-printing-portal > #hmi-direct-print-portal .no-print,
+  body.hmi-printing-portal > #hmi-direct-print-portal button {
+    display: none !important;
+  }
+
+  body.hmi-printing-portal > #hmi-direct-print-portal .hmi-direct-print-sheet {
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 7mm !important;
+    box-sizing: border-box !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    overflow: hidden !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  body.hmi-printing-portal > #hmi-direct-print-portal .hmi-direct-print-sheet:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+  body.hmi-printing-portal > #hmi-direct-print-portal .hmi-direct-print-sheet[data-orientation="landscape"] {
+    page: hmi-pdf-landscape;
+    padding: 5mm !important;
+  }
+
+  body.hmi-printing-portal > #hmi-direct-print-portal .hmi-direct-print-sheet-inner {
+    display: block !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 auto !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  body.hmi-printing-portal > #hmi-direct-print-portal .scaled-sheet-wrapper,
+  body.hmi-printing-portal > #hmi-direct-print-portal .bulk-evolution-sheet,
+  body.hmi-printing-portal > #hmi-direct-print-portal #evolution-continuous-doc {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    transform: none !important;
+    overflow: visible !important;
+  }
+
+  body.hmi-printing-portal > #hmi-direct-print-portal table.hmi-print-margin-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  body.hmi-printing-portal > #hmi-direct-print-portal table.hmi-print-margin-table > thead {
+    display: table-header-group !important;
+  }
+
+  body.hmi-printing-portal > #hmi-direct-print-portal table.hmi-print-margin-table > tfoot {
+    display: table-footer-group !important;
+  }
+
+  body.hmi-printing-portal > #hmi-direct-print-portal td.hmi-print-margin-spacer {
+    height: 10mm !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    line-height: 0 !important;
+    font-size: 0 !important;
+  }
+
+  body.hmi-printing-portal > #hmi-direct-print-portal td.hmi-print-margin-body {
+    padding: 0 12mm !important;
+    margin: 0 !important;
+    border: none !important;
+    vertical-align: top !important;
+  }
+
+  body.hmi-printing-portal > #hmi-direct-print-portal .scaled-sheet-wrapper + .scaled-sheet-wrapper,
+  body.hmi-printing-portal > #hmi-direct-print-portal .bulk-evolution-sheet + .bulk-evolution-sheet {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  body.hmi-printing-portal > #hmi-direct-print-portal .section-block {
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+  }
+
+  body.hmi-printing-portal > #hmi-direct-print-portal .pdf-avoid-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* 1. Reset Global Styles */
+  html, body, #root {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* 2. Nuclear Strike on UI Elements (Exclude Document Containers & Print Portal) */
+  body:not(.hmi-printing-portal):not(.hmi-printing-pdf-sheets) header,
+  body:not(.hmi-printing-portal):not(.hmi-printing-pdf-sheets) nav,
+  body:not(.hmi-printing-portal):not(.hmi-printing-pdf-sheets) footer,
+  body:not(.hmi-printing-portal):not(.hmi-printing-pdf-sheets) button,
+  body:not(.hmi-printing-portal):not(.hmi-printing-pdf-sheets) .no-print,
+  body:not(.hmi-printing-portal):not(.hmi-printing-pdf-sheets) .sticky,
+  body:not(.hmi-printing-portal):not(.hmi-printing-pdf-sheets) .top-bar-controls,
+  body:not(.hmi-printing-portal):not(.hmi-printing-pdf-sheets) [role="dialog"]:not(:has(.pdf-page-container)):not(:has(#evolution-continuous-doc)):not(:has(.bulk-evolution-sheet)),
+  body:not(.hmi-printing-portal):not(.hmi-printing-pdf-sheets) [role="presentation"],
+  body:not(.hmi-printing-portal):not(.hmi-printing-pdf-sheets) .fixed:not(:has(.pdf-page-container)):not(:has(#evolution-continuous-doc)):not(:has(.bulk-evolution-sheet)):not(#bulk-evolutions-print-root),
+  body:not(.hmi-printing-portal):not(.hmi-printing-pdf-sheets) .absolute:not(.pdf-page-container *):not(#evolution-continuous-doc *):not(.bulk-evolution-sheet *),
+  body:not(.hmi-printing-portal):not(.hmi-printing-pdf-sheets) .backdrop-blur-md:not(:has(#evolution-continuous-doc)):not(:has(.bulk-evolution-sheet)),
+  body:not(.hmi-printing-portal):not(.hmi-printing-pdf-sheets) .backdrop-blur-xs:not(:has(#evolution-continuous-doc)):not(:has(.bulk-evolution-sheet)),
+  body:not(.hmi-printing-portal):not(.hmi-printing-pdf-sheets) .backdrop-blur-lg:not(:has(#evolution-continuous-doc)):not(:has(.bulk-evolution-sheet)),
+  body:not(.hmi-printing-portal):not(.hmi-printing-pdf-sheets) .bg-slate-950:not(:has(.pdf-page-container)):not(:has(#evolution-continuous-doc)):not(:has(.bulk-evolution-sheet)),
+  body:not(.hmi-printing-portal):not(.hmi-printing-pdf-sheets) .bg-slate-900:not(:has(.pdf-page-container)):not(:has(#evolution-continuous-doc)):not(:has(.bulk-evolution-sheet)) {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    background: transparent !important;
+  }
+
+  /* 3. Force Document Hierarchy Visibility */
+  .pdf-preview-wrapper, 
+  .pdf-page-container,
+  #bulk-evolutions-print-root,
+  #bulk-evolutions-sheets-container,
+  .scaled-sheet-wrapper,
+  .bulk-evolution-sheet,
+  #evolution-continuous-doc {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Nuclear override to NEVER print buttons or elements explicitly marked no-print */
+  .no-print,
+  .print-hidden,
+  .print\:hidden,
+  button,
+  .pdf-page-container button,
+  .pdf-page-container .no-print,
+  .pdf-page-container .print\:hidden {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Ensure the containers holding the PDF become transparent and static */
+  .fixed:has(.pdf-page-container),
+  .fixed:has(#evolution-continuous-doc),
+  #bulk-evolutions-print-root {
+    display: block !important;
+    position: static !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    z-index: auto !important;
+  }
+
+  .pdf-page-scale-wrapper {
+    display: block !important;
+    height: auto !important;
+    transform: none !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .pdf-page-scale-wrapper > div {
+    transform: none !important;
+    width: 215.9mm !important;
+    height: 279.4mm !important;
+    position: static !important;
+  }
+
+  /* 4. Page Styling - OBLIGATORIAMENTE TAMAÑO CARTA (LETTER 215.9mm x 279.4mm) */
+  .pdf-page-container {
+    width: 215.9mm !important;
+    height: 279.4mm !important;
+    min-height: 279.4mm !important;
+    max-height: 279.4mm !important;
+    margin: 0 auto !important;
+    padding: 8mm 10mm !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: white !important;
+    page-break-after: always !important;
+    page-break-inside: avoid !important;
+    break-after: page !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Multi-page continuous expansion for medical orders during print */
+  #ordenes-medicas-page {
+    height: auto !important;
+    min-height: 279.4mm !important;
+    max-height: none !important;
+    overflow: visible !important;
+    page-break-after: auto !important;
+    page-break-inside: auto !important;
+    break-after: auto !important;
+  }
+
+  .pdf-page-container input,
+  .pdf-page-container textarea,
+  .pdf-page-container select {
+    border: none !important;
+    background: transparent !important;
+    font-size: 10pt !important;
+    color: black !important;
+    appearance: none !important;
+  }
+
+  @page {
+    size: letter portrait;
+    margin: 0 !important;
+  }
+
+  /* Avoid cutting text in the middle of a line */
+  h1, h2, h3, h4 {
+    page-break-inside: avoid !important;
+  }
+}
+
+@page {
+  size: letter portrait;
+  margin: 0 !important;
+}
+
+/* Screen Mode PDF Preview & Mobile Layout Rules */
+@media screen {
+  body:has(#medical-evolution-viewer-overlay) .hmi-seasonal-corner-badges,
+  body:has(#hmi-pdf-print-viewer-modal) .hmi-seasonal-corner-badges {
+    display: none !important;
+  }
+
+  #hmi-direct-print-portal {
+    display: none !important;
+  }
+
+  .pdf-preview-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .pdf-page-scale-wrapper {
+    box-sizing: border-box;
+    transition: height 0.2s ease-in-out;
+  }
+
+  .pdf-page-container {
+    width: 215.9mm;
+    max-width: 100%;
+    min-height: 279.4mm;
+    height: auto;
+    background: #ffffff;
+    color: #000000;
+    box-sizing: border-box;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+    overflow: visible;
+  }
+
+  /* Hide print-only spacer rows while viewing on screen */
+  tr.hmi-print-spacer-row {
+    display: none !important;
+  }
+
+  /* Specific rule for dynamic documents like medical orders & resumen de egreso so they maintain full physical paper width for clean proportional zoom on mobile */
+  #ordenes-medicas-page,
+  #resumen-egreso-page {
+    width: 215.9mm !important;
+    min-width: 215.9mm !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+}
+
+/* Hide scrollbars utility while preserving touch swipe */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom scrollbars for medical dashboards */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.5);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* ========================================== */
+/* CUTE ANIMATED BABY KEYFRAMES & UTILITIES   */
+/* ========================================== */
+@keyframes babyBounce {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-14px) rotate(-3deg) scale(1.02);
+  }
+  50% {
+    transform: translateY(-4px) rotate(2deg) scale(0.99);
+  }
+  75% {
+    transform: translateY(-18px) rotate(4deg) scale(1.03);
+  }
+}
+
+@keyframes babyLaugh {
+  0%, 100% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.08) rotate(-2deg);
+  }
+  40% {
+    transform: scale(0.98) rotate(2deg);
+  }
+  60% {
+    transform: scale(1.09) rotate(-1deg);
+  }
+  80% {
+    transform: scale(1.02) rotate(1deg);
+  }
+}
+
+@keyframes babyArmLeft {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-35deg);
+  }
+}
+
+@keyframes babyArmRight {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(35deg);
+  }
+}
+
+@keyframes babyLegs {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-12deg);
+  }
+}
+
+@keyframes floatingSparkles {
+  0% {
+    transform: translateY(0px) scale(0.6) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-70px) scale(1.2) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(20, 184, 166, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 50px rgba(52, 211, 153, 0.7);
+  }
+}
+
+.animate-baby-bounce {
+  animation: babyBounce 2.4s infinite ease-in-out;
+}
+
+.animate-baby-laugh {
+  animation: babyLaugh 1.2s infinite ease-in-out;
+}
+
+.animate-baby-arm-l {
+  transform-origin: top right;
+  animation: babyArmLeft 0.8s infinite ease-in-out;
+}
+
+.animate-baby-arm-r {
+  transform-origin: top left;
+  animation: babyArmRight 0.8s infinite ease-in-out;
+}
+
+.animate-baby-legs {
+  transform-origin: top center;
+  animation: babyLegs 1.1s infinite ease-in-out;
+}
+
+.animate-floating-sparkle-1 {
+  animation: floatingSparkles 2.8s infinite linear;
+}
+
+.animate-floating-sparkle-2 {
+  animation: floatingSparkles 3.2s 0.9s infinite linear;
+}
+
+.animate-floating-sparkle-3 {
+  animation: floatingSparkles 2.5s 1.5s infinite linear;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+@keyframes snowfall {
+  0% { transform: translate3d(0, -20px, 0) rotate(0deg); opacity: 1; }
+  100% { transform: translate3d(0, 105vh, 0) rotate(360deg); opacity: 1; }
+}
+@keyframes seasonalRainFall {
+  0% {
+    transform: translate3d(0px, -40px, 0) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translate3d(var(--rain-sway-x, 14px), 52vh, 0) rotate(var(--rain-rot-mid, 160deg));
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--rain-drift-x, 22px), 108vh, 0) rotate(var(--rain-rot-end, 320deg));
+    opacity: 1;
+  }
+}
+@keyframes seasonalBounceIn {
+  0% { transform: scale(0.25) translate3d(0, -18px, 0); opacity: 1; }
+  45% { transform: scale(1.32) translate3d(0, 8px, 0); opacity: 1; }
+  68% { transform: scale(0.84) translate3d(0, -6px, 0); opacity: 1; }
+  84% { transform: scale(1.12) translate3d(0, 3px, 0); opacity: 1; }
+  100% { transform: scale(1) translate3d(0, 0, 0); opacity: 1; }
+}
+.animate-snowfall-1 { animation: snowfall 7s linear infinite; }
+.animate-snowfall-2 { animation: snowfall 11s linear infinite; }
+.animate-snowfall-3 { animation: snowfall 9s linear infinite; }
+.animate-snowfall-4 { animation: snowfall 14s linear infinite; }
+.animate-seasonal-bounce-in {
+  display: inline-block;
+  animation: seasonalBounceIn 1.1s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes quickJumpDropdownSlideIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -10px, 0) scaleY(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scaleY(1);
+  }
+}
+
+@keyframes quickJumpItemsFadeSlide {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -6px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-quick-jump-slide-in {
+  transform-origin: top center;
+  will-change: transform, opacity;
+  animation: quickJumpDropdownSlideIn 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-quick-jump-items-in {
+  will-change: transform, opacity;
+  animation: quickJumpItemsFadeSlide 280ms cubic-bezier(0.16, 1, 0.3, 1) 40ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-snowfall-1,
+  .animate-snowfall-2,
+  .animate-snowfall-3,
+  .animate-snowfall-4,
+  .animate-seasonal-bounce-in,
+  .animate-quick-jump-slide-in,
+  .animate-quick-jump-items-in,
+  [data-rain-particle="true"],
+  .animate-baby-bounce,
+  .animate-baby-laugh {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* ========================================== */
+/* HEADER & AUDIO BUTTON NEON GLOW SYSTEM     */
+/* ========================================== */
+@media screen {
+  :root,
+  [data-seasonal="normal"] {
+    --header-neon-light-inner: rgba(255, 255, 255, 0.92);
+    --header-neon-light-glow: rgba(13, 148, 136, 0.56);
+    --header-neon-light-outer: rgba(6, 182, 212, 0.36);
+    --header-neon-dark-core: rgba(153, 246, 228, 0.88);
+    --header-neon-dark-glow: rgba(45, 212, 191, 0.72);
+    --header-neon-dark-outer: rgba(34, 211, 238, 0.45);
+  }
+
+  [data-seasonal="navidad"] {
+    --header-neon-light-inner: rgba(255, 255, 255, 0.92);
+    --header-neon-light-glow: rgba(22, 163, 74, 0.56);
+    --header-neon-light-outer: rgba(245, 158, 11, 0.38);
+    --header-neon-dark-core: rgba(167, 243, 208, 0.9);
+    --header-neon-dark-glow: rgba(52, 211, 153, 0.76);
+    --header-neon-dark-outer: rgba(251, 191, 36, 0.46);
+  }
+
+  [data-seasonal="halloween"] {
+    --header-neon-light-inner: rgba(255, 255, 255, 0.92);
+    --header-neon-light-glow: rgba(234, 88, 12, 0.58);
+    --header-neon-light-outer: rgba(147, 51, 234, 0.38);
+    --header-neon-dark-core: rgba(254, 215, 170, 0.9);
+    --header-neon-dark-glow: rgba(251, 146, 60, 0.78);
+    --header-neon-dark-outer: rgba(192, 132, 252, 0.48);
+  }
+
+  [data-seasonal="dia_del_nino"] {
+    --header-neon-light-inner: rgba(255, 255, 255, 0.92);
+    --header-neon-light-glow: rgba(2, 132, 199, 0.56);
+    --header-neon-light-outer: rgba(251, 191, 36, 0.36);
+    --header-neon-dark-core: rgba(186, 230, 253, 0.9);
+    --header-neon-dark-glow: rgba(56, 189, 248, 0.76);
+    --header-neon-dark-outer: rgba(251, 191, 36, 0.42);
+  }
+
+  [data-seasonal="dia_del_medico"] {
+    --header-neon-light-inner: rgba(255, 255, 255, 0.92);
+    --header-neon-light-glow: rgba(37, 99, 235, 0.56);
+    --header-neon-light-outer: rgba(245, 158, 11, 0.36);
+    --header-neon-dark-core: rgba(191, 219, 254, 0.9);
+    --header-neon-dark-glow: rgba(96, 165, 250, 0.76);
+    --header-neon-dark-outer: rgba(251, 191, 36, 0.42);
+  }
+
+  [data-seasonal="carnaval"] {
+    --header-neon-light-inner: rgba(255, 255, 255, 0.92);
+    --header-neon-light-glow: rgba(192, 38, 211, 0.56);
+    --header-neon-light-outer: rgba(20, 184, 166, 0.38);
+    --header-neon-dark-core: rgba(245, 208, 254, 0.9);
+    --header-neon-dark-glow: rgba(232, 121, 249, 0.76);
+    --header-neon-dark-outer: rgba(45, 212, 191, 0.46);
+  }
+
+  [data-seasonal="ano_nuevo"] {
+    --header-neon-light-inner: rgba(255, 255, 255, 0.92);
+    --header-neon-light-glow: rgba(217, 119, 6, 0.58);
+    --header-neon-light-outer: rgba(250, 204, 21, 0.42);
+    --header-neon-dark-core: rgba(254, 240, 138, 0.92);
+    --header-neon-dark-glow: rgba(251, 191, 36, 0.78);
+    --header-neon-dark-outer: rgba(253, 224, 71, 0.48);
+  }
+
+  [data-seasonal="guardia_nocturna"] {
+    --header-neon-light-inner: rgba(255, 255, 255, 0.92);
+    --header-neon-light-glow: rgba(79, 70, 229, 0.56);
+    --header-neon-light-outer: rgba(56, 189, 248, 0.36);
+    --header-neon-dark-core: rgba(199, 210, 254, 0.9);
+    --header-neon-dark-glow: rgba(129, 140, 248, 0.78);
+    --header-neon-dark-outer: rgba(56, 189, 248, 0.48);
+  }
+
+  [data-seasonal="primavera"] {
+    --header-neon-light-inner: rgba(255, 255, 255, 0.92);
+    --header-neon-light-glow: rgba(219, 39, 119, 0.54);
+    --header-neon-light-outer: rgba(16, 185, 129, 0.36);
+    --header-neon-dark-core: rgba(251, 207, 232, 0.9);
+    --header-neon-dark-glow: rgba(244, 114, 182, 0.76);
+    --header-neon-dark-outer: rgba(52, 211, 153, 0.44);
+  }
+
+  [data-seasonal="espacio"] {
+    --header-neon-light-inner: rgba(255, 255, 255, 0.92);
+    --header-neon-light-glow: rgba(124, 58, 237, 0.58);
+    --header-neon-light-outer: rgba(34, 211, 238, 0.4);
+    --header-neon-dark-core: rgba(221, 214, 254, 0.92);
+    --header-neon-dark-glow: rgba(167, 139, 250, 0.8);
+    --header-neon-dark-outer: rgba(56, 189, 248, 0.52);
+  }
+
+  [data-seasonal="fondo_marino"] {
+    --header-neon-light-inner: rgba(255, 255, 255, 0.92);
+    --header-neon-light-glow: rgba(8, 145, 178, 0.58);
+    --header-neon-light-outer: rgba(20, 184, 166, 0.4);
+    --header-neon-dark-core: rgba(165, 243, 252, 0.92);
+    --header-neon-dark-glow: rgba(34, 211, 238, 0.8);
+    --header-neon-dark-outer: rgba(45, 212, 191, 0.5);
+  }
+
+  [data-seasonal="pequenos_heroes"] {
+    --header-neon-light-inner: rgba(255, 255, 255, 0.92);
+    --header-neon-light-glow: rgba(220, 38, 38, 0.54);
+    --header-neon-light-outer: rgba(245, 158, 11, 0.38);
+    --header-neon-dark-core: rgba(254, 202, 202, 0.9);
+    --header-neon-dark-glow: rgba(248, 113, 113, 0.76);
+    --header-neon-dark-outer: rgba(251, 191, 36, 0.46);
+  }
+
+  [data-seasonal="amor_amistad"] {
+    --header-neon-light-inner: rgba(255, 255, 255, 0.92);
+    --header-neon-light-glow: rgba(225, 29, 72, 0.54);
+    --header-neon-light-outer: rgba(244, 114, 182, 0.38);
+    --header-neon-dark-core: rgba(254, 205, 211, 0.9);
+    --header-neon-dark-glow: rgba(251, 113, 133, 0.78);
+    --header-neon-dark-outer: rgba(244, 114, 182, 0.48);
+  }
+
+  [data-seasonal="otono"] {
+    --header-neon-light-inner: rgba(255, 255, 255, 0.92);
+    --header-neon-light-glow: rgba(217, 119, 6, 0.56);
+    --header-neon-light-outer: rgba(234, 88, 12, 0.36);
+    --header-neon-dark-core: rgba(253, 230, 138, 0.9);
+    --header-neon-dark-glow: rgba(245, 158, 11, 0.76);
+    --header-neon-dark-outer: rgba(251, 146, 60, 0.46);
+  }
+
+  [data-seasonal="lluvia_relajante"] {
+    --header-neon-light-inner: rgba(255, 255, 255, 0.92);
+    --header-neon-light-glow: rgba(2, 132, 199, 0.54);
+    --header-neon-light-outer: rgba(20, 184, 166, 0.36);
+    --header-neon-dark-core: rgba(186, 230, 253, 0.9);
+    --header-neon-dark-glow: rgba(56, 189, 248, 0.76);
+    --header-neon-dark-outer: rgba(45, 212, 191, 0.46);
+  }
+
+  [data-seasonal="fiestas_patrias"] {
+    --header-neon-light-inner: rgba(255, 255, 255, 0.94);
+    --header-neon-light-glow: rgba(29, 78, 216, 0.54);
+    --header-neon-light-outer: rgba(234, 179, 8, 0.42);
+    --header-neon-dark-core: rgba(254, 240, 138, 0.92);
+    --header-neon-dark-glow: rgba(250, 204, 21, 0.78);
+    --header-neon-dark-outer: rgba(96, 165, 250, 0.5);
+  }
+
+  [data-seasonal="equipo_salud"] {
+    --header-neon-light-inner: rgba(255, 255, 255, 0.92);
+    --header-neon-light-glow: rgba(5, 150, 105, 0.56);
+    --header-neon-light-outer: rgba(20, 184, 166, 0.38);
+    --header-neon-dark-core: rgba(167, 243, 208, 0.9);
+    --header-neon-dark-glow: rgba(52, 211, 153, 0.78);
+    --header-neon-dark-outer: rgba(45, 212, 191, 0.48);
+  }
+
+  /* Every text element inside <header> receives crisp neon glow */
+  .hmi-header-neon,
+  .hmi-header-neon a,
+  .hmi-header-neon button,
+  .hmi-header-neon span,
+  .header-neon-text {
+    text-shadow:
+      0 0 2px var(--header-neon-light-inner),
+      0 0 8px var(--header-neon-light-glow),
+      0 0 16px var(--header-neon-light-outer);
+  }
+
+  .dark .hmi-header-neon,
+  .dark .hmi-header-neon a,
+  .dark .hmi-header-neon button,
+  .dark .hmi-header-neon span,
+  .dark .header-neon-text {
+    text-shadow:
+      0 0 5px var(--header-neon-dark-core),
+      0 0 12px var(--header-neon-dark-glow),
+      0 0 22px var(--header-neon-dark-outer);
+  }
+
+  .hmi-header-neon .header-neon-text-strong {
+    text-shadow:
+      0 0 3px var(--header-neon-light-inner),
+      0 0 11px var(--header-neon-light-glow),
+      0 0 22px var(--header-neon-light-outer);
+  }
+
+  .dark .hmi-header-neon .header-neon-text-strong {
+    text-shadow:
+      0 0 7px var(--header-neon-dark-core),
+      0 0 16px var(--header-neon-dark-glow),
+      0 0 28px var(--header-neon-dark-outer);
+  }
+
+  /* Audio toggle button multi-layer neon shadow */
+  .audio-btn-neon-playing {
+    box-shadow:
+      0 0 8px rgba(16, 185, 129, 0.74),
+      0 0 18px rgba(52, 211, 153, 0.54),
+      0 0 30px rgba(6, 182, 212, 0.36),
+      inset 0 0 10px rgba(52, 211, 153, 0.24);
+  }
+
+  .audio-btn-neon-playing:hover {
+    box-shadow:
+      0 0 10px rgba(16, 185, 129, 0.9),
+      0 0 22px rgba(52, 211, 153, 0.7),
+      0 0 38px rgba(6, 182, 212, 0.5),
+      inset 0 0 12px rgba(52, 211, 153, 0.32);
+  }
+
+  .dark .audio-btn-neon-playing {
+    box-shadow:
+      0 0 10px rgba(52, 211, 153, 0.85),
+      0 0 22px rgba(16, 185, 129, 0.64),
+      0 0 38px rgba(34, 211, 238, 0.44),
+      inset 0 0 12px rgba(52, 211, 153, 0.3);
+  }
+
+  .dark .audio-btn-neon-playing:hover {
+    box-shadow:
+      0 0 12px rgba(52, 211, 153, 0.96),
+      0 0 26px rgba(16, 185, 129, 0.78),
+      0 0 44px rgba(34, 211, 238, 0.58),
+      inset 0 0 14px rgba(52, 211, 153, 0.38);
+  }
+
+  .audio-btn-neon-muted {
+    box-shadow:
+      0 0 8px rgba(244, 63, 94, 0.66),
+      0 0 16px rgba(244, 63, 94, 0.44),
+      0 0 28px rgba(225, 29, 72, 0.26),
+      inset 0 0 8px rgba(244, 63, 94, 0.16);
+  }
+
+  .audio-btn-neon-muted:hover {
+    box-shadow:
+      0 0 10px rgba(244, 63, 94, 0.82),
+      0 0 20px rgba(244, 63, 94, 0.58),
+      0 0 34px rgba(225, 29, 72, 0.36),
+      inset 0 0 10px rgba(244, 63, 94, 0.24);
+  }
+
+  .dark .audio-btn-neon-muted {
+    box-shadow:
+      0 0 10px rgba(251, 113, 133, 0.74),
+      0 0 20px rgba(244, 63, 94, 0.54),
+      0 0 34px rgba(225, 29, 72, 0.34),
+      inset 0 0 10px rgba(244, 63, 94, 0.24);
+  }
+
+  .dark .audio-btn-neon-muted:hover {
+    box-shadow:
+      0 0 12px rgba(251, 113, 133, 0.9),
+      0 0 24px rgba(244, 63, 94, 0.68),
+      0 0 40px rgba(225, 29, 72, 0.45),
+      inset 0 0 12px rgba(244, 63, 94, 0.32);
+  }
+
+  /* Mobile viewport GPU & touch responsiveness optimizations */
+  button,
+  a,
+  select,
+  input,
+  textarea {
+    touch-action: manipulation;
+  }
+
+  @media (max-width: 767px) {
+    .hmi-header-neon {
+      box-shadow: 0 2px 10px var(--header-neon-light-glow);
+    }
+
+    .dark .hmi-header-neon {
+      box-shadow: 0 2px 12px var(--header-neon-dark-glow);
+    }
+
+    .hmi-header-neon .header-neon-text {
+      text-shadow:
+        0 0 2px var(--header-neon-light-inner),
+        0 0 7px var(--header-neon-light-glow);
+    }
+
+    .hmi-header-neon .header-neon-text-strong {
+      text-shadow:
+        0 0 3px var(--header-neon-light-inner),
+        0 0 10px var(--header-neon-light-glow),
+        0 0 18px var(--header-neon-light-outer);
+    }
+
+    .dark .hmi-header-neon .header-neon-text {
+      text-shadow:
+        0 0 4px var(--header-neon-dark-core),
+        0 0 10px var(--header-neon-dark-glow);
+    }
+
+    .dark .hmi-header-neon .header-neon-text-strong {
+      text-shadow:
+        0 0 6px var(--header-neon-dark-core),
+        0 0 14px var(--header-neon-dark-glow),
+        0 0 24px var(--header-neon-dark-outer);
+    }
+  }
+
+  /* Mobile Bottom Navigation (Inicio, Guardias, Altas, Tareas, Stats, Admin) Neon Glow */
+  .hmi-mobile-nav-neon {
+    box-shadow: 0 -2px 10px var(--header-neon-light-glow);
+  }
+
+  .dark .hmi-mobile-nav-neon {
+    box-shadow: 0 -2px 14px var(--header-neon-dark-glow);
+  }
+
+  .hmi-mobile-nav-neon .hmi-mobile-nav-label {
+    text-shadow:
+      0 0 2px var(--header-neon-light-inner),
+      0 0 7px var(--header-neon-light-glow);
+  }
+
+  .hmi-mobile-nav-neon .hmi-mobile-nav-item-active .hmi-mobile-nav-label {
+    text-shadow:
+      0 0 3px var(--header-neon-light-inner),
+      0 0 10px var(--header-neon-light-glow),
+      0 0 18px var(--header-neon-light-outer);
+  }
+
+  .dark .hmi-mobile-nav-neon .hmi-mobile-nav-label {
+    text-shadow:
+      0 0 4px var(--header-neon-dark-core),
+      0 0 10px var(--header-neon-dark-glow);
+  }
+
+  .dark .hmi-mobile-nav-neon .hmi-mobile-nav-item-active .hmi-mobile-nav-label {
+    text-shadow:
+      0 0 6px var(--header-neon-dark-core),
+      0 0 14px var(--header-neon-dark-glow),
+      0 0 24px var(--header-neon-dark-outer);
+  }
+
+  .hmi-mobile-nav-neon .hmi-mobile-nav-icon {
+    filter: drop-shadow(0 0 4px var(--header-neon-light-glow));
+  }
+
+  .hmi-mobile-nav-neon .hmi-mobile-nav-icon-active {
+    filter: drop-shadow(0 0 2px var(--header-neon-light-inner)) drop-shadow(0 0 8px var(--header-neon-light-glow));
+  }
+
+  .dark .hmi-mobile-nav-neon .hmi-mobile-nav-icon {
+    filter: drop-shadow(0 0 5px var(--header-neon-dark-glow));
+  }
+
+  .dark .hmi-mobile-nav-neon .hmi-mobile-nav-icon-active {
+    filter: drop-shadow(0 0 6px var(--header-neon-dark-core)) drop-shadow(0 0 12px var(--header-neon-dark-glow));
+  }
+
+  .hmi-mobile-nav-neon .hmi-mobile-nav-admin .hmi-mobile-nav-icon {
+    filter: drop-shadow(0 0 5px rgba(217, 119, 6, 0.72));
+  }
+
+  .dark .hmi-mobile-nav-neon .hmi-mobile-nav-admin .hmi-mobile-nav-icon {
+    filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.85));
+  }
+
+  .hmi-mobile-nav-neon .hmi-mobile-nav-admin .hmi-mobile-nav-label {
+    text-shadow:
+      0 0 2px rgba(255, 255, 255, 0.9),
+      0 0 8px rgba(217, 119, 6, 0.65);
+  }
+
+  .dark .hmi-mobile-nav-neon .hmi-mobile-nav-admin .hmi-mobile-nav-label {
+    text-shadow:
+      0 0 5px rgba(254, 240, 138, 0.88),
+      0 0 12px rgba(245, 158, 11, 0.78);
+  }
+
+  /* Dedicated Yellow Neon Shadow for Órdenes Médicas Buttons */
+  .ordenes-btn-neon-yellow {
+    box-shadow:
+      0 0 8px rgba(250, 204, 21, 0.78),
+      0 0 18px rgba(245, 158, 11, 0.54),
+      0 0 30px rgba(234, 179, 8, 0.34),
+      inset 0 0 8px rgba(254, 240, 138, 0.32);
+  }
+
+  .ordenes-btn-neon-yellow:hover:not(:disabled) {
+    box-shadow:
+      0 0 11px rgba(250, 204, 21, 0.94),
+      0 0 22px rgba(245, 158, 11, 0.72),
+      0 0 38px rgba(234, 179, 8, 0.48),
+      inset 0 0 10px rgba(254, 240, 138, 0.42);
+  }
+
+  .dark .ordenes-btn-neon-yellow {
+    box-shadow:
+      0 0 10px rgba(250, 204, 21, 0.86),
+      0 0 22px rgba(245, 158, 11, 0.64),
+      0 0 36px rgba(234, 179, 8, 0.42),
+      inset 0 0 10px rgba(254, 240, 138, 0.28);
+  }
+
+  .dark .ordenes-btn-neon-yellow:hover:not(:disabled) {
+    box-shadow:
+      0 0 13px rgba(253, 224, 71, 0.98),
+      0 0 26px rgba(245, 158, 11, 0.8),
+      0 0 42px rgba(234, 179, 8, 0.56),
+      inset 0 0 12px rgba(254, 240, 138, 0.4);
+  }
+
+  /* Global Adaptive Seasonal Neon Shadow for ALL Interactive App Buttons */
+  button:not(.pdf-page-container button):not(#hmi-pdf-print-viewer-modal button):not(.audio-btn-neon):not(.ordenes-btn-neon-yellow):not(.hmi-mobile-nav-item):not(.hmi-header-nav-link):not(.absolute) {
+    box-shadow:
+      0 0 8px var(--header-neon-light-glow),
+      0 0 16px var(--header-neon-light-outer);
+  }
+
+  button:not(.pdf-page-container button):not(#hmi-pdf-print-viewer-modal button):not(.audio-btn-neon):not(.ordenes-btn-neon-yellow):not(.hmi-mobile-nav-item):not(.hmi-header-nav-link):not(.absolute):hover:not(:disabled) {
+    box-shadow:
+      0 0 12px var(--header-neon-light-glow),
+      0 0 24px var(--header-neon-light-outer);
+  }
+
+  .dark button:not(.pdf-page-container button):not(#hmi-pdf-print-viewer-modal button):not(.audio-btn-neon):not(.ordenes-btn-neon-yellow):not(.hmi-mobile-nav-item):not(.hmi-header-nav-link):not(.absolute) {
+    box-shadow:
+      0 0 9px var(--header-neon-dark-glow),
+      0 0 20px var(--header-neon-dark-outer);
+  }
+
+  .dark button:not(.pdf-page-container button):not(#hmi-pdf-print-viewer-modal button):not(.audio-btn-neon):not(.ordenes-btn-neon-yellow):not(.hmi-mobile-nav-item):not(.hmi-header-nav-link):not(.absolute):hover:not(:disabled) {
+    box-shadow:
+      0 0 14px var(--header-neon-dark-glow),
+      0 0 28px var(--header-neon-dark-outer);
+  }
+
+  button.absolute:not(.pdf-page-container button) {
+    filter: drop-shadow(0 0 5px var(--header-neon-light-glow));
+  }
+
+  .dark button.absolute:not(.pdf-page-container button) {
+    filter: drop-shadow(0 0 6px var(--header-neon-dark-glow));
+  }
+
+  @media (max-width: 767px) {
+    .ordenes-btn-neon-yellow {
+      box-shadow: 0 0 10px rgba(250, 204, 21, 0.8);
+    }
+
+    .dark .ordenes-btn-neon-yellow {
+      box-shadow: 0 0 12px rgba(250, 204, 21, 0.9);
+    }
+
+    button:not(.pdf-page-container button):not(.audio-btn-neon):not(.ordenes-btn-neon-yellow):not(.hmi-mobile-nav-item):not(.hmi-header-nav-link):not(.absolute) {
+      box-shadow: 0 0 8px var(--header-neon-light-glow);
+    }
+
+    .dark button:not(.pdf-page-container button):not(.audio-btn-neon):not(.ordenes-btn-neon-yellow):not(.hmi-mobile-nav-item):not(.hmi-header-nav-link):not(.absolute) {
+      box-shadow: 0 0 10px var(--header-neon-dark-glow);
+    }
+  }
+}
+
+
+
